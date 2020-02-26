@@ -41,8 +41,6 @@ class Login extends Component {
 					rowid: data.id.id
 				})
 				this.props.history.push(`/profile`)
-			}else{
-				console.log(data)
 			}
 		})
 		.catch(err => {

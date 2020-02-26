@@ -31,9 +31,6 @@ class Register extends Component {
 		.then(data => {
 			if(data.status === 201){
 				this.props.history.push('/')
-			}else{
-				console.log(data)
-				// alert('Username or email is already taken')
 			}
 		})
 		.catch(err => {
