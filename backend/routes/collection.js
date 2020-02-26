@@ -60,7 +60,6 @@ collectionRouter.get('/get/:id', authRequired, (req, res) => {
 
   database.all(getOneCollection, (err, collection) => {
     if(err){
-      console.log
       return res.status(500).json({
         status: 500,
         message: 'something went wrong. try again'

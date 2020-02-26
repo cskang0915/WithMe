@@ -43,7 +43,7 @@ class SearchCollectionContainer extends Component {
         })
       }else{
         this.setState({
-          message: 'no collection'
+          message: 'not a valid collection'
         })
       }
     })

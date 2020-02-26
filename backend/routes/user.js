@@ -46,7 +46,6 @@ userRouter.post('/register', (req, res) => {
 				
 				database.run(createNewUser, [req.body.display_name, req.body.email, hash, null], (err) => {
 					if(err){
-						console.log(err)
 						return res.status(500).json({
 							status: 500,
 							message: 'something went wrong. try again.'
@@ -129,8 +128,6 @@ userRouter.post('/login', (req, res) => {
 
 // GET one request to get info for an authorized user
 userRouter.get('/info', authRequired, (req, res) => {
-	// const username = req.params.username
-	// console.log(username)
 	const getOneUsername = `
 	SELECT * FROM user
 	WHERE user.rowid = ${req.userId}
@@ -138,7 +135,6 @@ userRouter.get('/info', authRequired, (req, res) => {
 
 	database.all(getOneUsername, (err, user) => {
 		if(err){
-			console.log(err)
 			return res.status(500).json({
 				status: 500,
 				message: 'something went wrong. try again.'
@@ -197,7 +193,6 @@ userRouter.delete('/delete', authRequired, (req, res) => {
 
 	database.run(deleteUser, (err) => {
 		if(err){
-			console.log(err)
 			return res.status(500).json({
 				status: 500,
 				message: 'something went wrong. try again.'

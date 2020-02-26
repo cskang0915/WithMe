@@ -76,7 +76,11 @@ class EntryContainer extends Component {
 							error: null,
 						})
 					})
-					.catch((err) => console.log(err))
+					.catch((err) => {
+						this.setState({
+							error: err
+						})
+					})
 			} else {
 				let newCollection = this.state
 				fetch(`${process.env.REACT_APP_API}/api/collection/new`, {
@@ -122,7 +126,11 @@ class EntryContainer extends Component {
 							error: null,
 						})
 					})
-					.catch((err) => console.log(err))
+					.catch((err) => {
+						this.setState({
+							error: err
+						})
+					})
 				})
 			}
 		})

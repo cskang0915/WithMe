@@ -12,14 +12,6 @@ class Entry extends Component {
 			}
 		})
 		.then(res => res.json())
-		// .then(data => {
-		// 	console.log('clicked')
-		// 	if(data.status === 200){
-		// 		console.log('hello')
-		// 	}else {
-		// 		console.log('hi')
-		// 	}
-		// })
 		.then(() => {
 			this.props.updateAllEntry()
 		})

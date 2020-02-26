@@ -6,7 +6,6 @@ require('dotenv').config()
 
 module.exports = (req, res, next) => {
 	const bearerHeader = req.headers['authorization']
-
 	if(typeof bearerHeader !== 'undefined'){
 		const bearer = bearerHeader.split(' ')
 		const bearerToken = bearer[1]
@@ -16,7 +15,6 @@ module.exports = (req, res, next) => {
 		req.userId = verified.id
 
 		const checkUser = `SELECT *, rowid FROM user WHERE user.rowid = ${verified.id}`
-
 		database.all(checkUser, (err, checkedUser) => {
 			if(err){
 				return res.status(500).json({
@@ -26,7 +24,7 @@ module.exports = (req, res, next) => {
 			}else if(checkedUser.length === 0){
 				return res.status(403).json({
 					status: 403,
-					message: 'requires permissions.'
+					message: 'requires permissions1.'
 				})
 			}else{
 				next()
@@ -35,7 +33,7 @@ module.exports = (req, res, next) => {
 	}else{
 		return res.status(403).json({
 			status: 403,
-			message: 'requires permissions.'
+			message: 'requires permissions2.'
 		})
 	}
 }

@@ -19,13 +19,11 @@ entryRouter.post('/new', authRequired, (req, res) => {
 			req.body.picture
 		], (err) => {
 			if(err){
-				console.log(err)
 				return res.status(500).json({
 					status: 500,
 					message: 'something went wrong. try again.'
 				})
 			}else{
-				console.log('here')
 				return res.status(200).json({
 					status: 200,
 					message: 'created a new entry.'
@@ -102,7 +100,7 @@ entryRouter.get('/get/year/:year', authRequired, (req, res) => {
 	SELECT *, entry.rowid FROM entry
 	JOIN collection ON collection.rowid = entry.collection_id
 	WHERE entry.user_id = ${req.userId}
-	AND entry.day = ${req.params.year}
+	AND entry.year = ${req.params.year}
 	`
 
 	database.all(getByYear, (err, entry) => {
