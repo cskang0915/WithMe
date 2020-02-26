@@ -20,7 +20,6 @@ class Entry extends Component {
 	setEntryLocation = () => {
 		let latitude = this.props.entry.latitude
 		let longitude = this.props.entry.longitude
-		console.log(latitude, longitude)
 
 		this.setState({
 			viewport: {
