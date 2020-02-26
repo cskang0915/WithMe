@@ -9,7 +9,7 @@ class Login extends Component {
 		error: null,
 	}
 
-	componentDidMount(){
+	componentDidMount() {
 		if(localStorage.getItem('uid')){
 			this.props.history.push('/profile')
 		}

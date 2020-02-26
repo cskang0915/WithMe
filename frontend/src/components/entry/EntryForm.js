@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 
 class EntryForm extends Component {
+	// componentDidMount() {
+	// 	this.props.createMap()
+	// }
 	render() {
 		return(
 			<div>

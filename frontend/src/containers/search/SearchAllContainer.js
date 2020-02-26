@@ -6,7 +6,7 @@ class SearchAllContainer extends Component {
     data: []
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getAllEntry()
   }
 

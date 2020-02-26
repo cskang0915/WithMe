@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import EntryForm from '../../components/entry/EntryForm'
+import mapboxgl from 'mapbox-gl'
+import './EntryFormContainer.css'
 
 class EntryContainer extends Component {
 	date = new Date()
@@ -14,7 +16,27 @@ class EntryContainer extends Component {
 		initial_date: `${this.date.getFullYear()}-${(this.date.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}-${this.date.getDate()}`,
 		initial_time: `${this.date.getHours()}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
 		collection_name: "",
+		lng: 5,
+		lat:34,
+		zoom: 2,
 		error: null,
+	}
+
+	componentDidMount() {
+		const map = new mapboxgl.Map({
+			container: this.mapContainer,
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: [this.state.lng, this.state.lat],
+			zoom: this.state.zoom
+		})
+		
+		map.on('move', () => {
+			this.setState({
+				lng: map.getCenter().lng.toFixed(4),
+				lat: map.getCenter().lat.toFixed(4),
+				zoom: map.getZoom().toFixed(2)
+			})
+		})
 	}
 
 	handleChange = (event) => {
@@ -138,7 +160,10 @@ class EntryContainer extends Component {
 
 	render() {
 		return(
-			<EntryForm state = {this.state} handleChange = {this.handleChange} handleSubmit = {this.handleSubmit}/>
+			<div>
+				<EntryForm state = {this.state} createMap = {this.createMap} handleChange = {this.handleChange} handleSubmit = {this.handleSubmit}/>
+				<div ref={el => this.mapContainer = el} className='mapContainer'/>
+			</div>
 		)
 	}
 }
