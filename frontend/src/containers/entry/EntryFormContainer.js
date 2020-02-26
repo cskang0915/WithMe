@@ -1,42 +1,22 @@
 import React, {Component} from 'react'
 import EntryForm from '../../components/entry/EntryForm'
-import mapboxgl from 'mapbox-gl'
-import './EntryFormContainer.css'
 
-class EntryContainer extends Component {
+class EntryFormContainer extends Component {
 	date = new Date()
 	state = {
 		month: this.date.getMonth() + 1,
 		day: this.date.getDate(),
 		year: this.date.getFullYear(),
-		time: `${this.date.getHours()}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
+		time: `${this.date.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
 		entry: '',
 		collection_id: null,
 		picture: null,
 		initial_date: `${this.date.getFullYear()}-${(this.date.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}-${this.date.getDate()}`,
-		initial_time: `${this.date.getHours()}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
+		initial_time: `${this.date.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
 		collection_name: "",
-		lng: 5,
-		lat:34,
-		zoom: 2,
+		latitude: null,
+		longitude: null,
 		error: null,
-	}
-
-	componentDidMount() {
-		const map = new mapboxgl.Map({
-			container: this.mapContainer,
-			style: 'mapbox://styles/mapbox/streets-v11',
-			center: [this.state.lng, this.state.lat],
-			zoom: this.state.zoom
-		})
-		
-		map.on('move', () => {
-			this.setState({
-				lng: map.getCenter().lng.toFixed(4),
-				lat: map.getCenter().lat.toFixed(4),
-				zoom: map.getZoom().toFixed(2)
-			})
-		})
 	}
 
 	handleChange = (event) => {
@@ -83,17 +63,16 @@ class EntryContainer extends Component {
 						}
 					})
 					.then(() => {
-						// window.location.reload(true)
 						this.setState({
 							month: this.date.getMonth() + 1,
 							day: this.date.getDate(),
 							year: this.date.getFullYear(),
-							time: `${this.date.getHours()}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
+							time: `${this.date.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
 							entry: '',
 							collection_id: null,
 							picture: null,
 							initial_date: `${this.date.getFullYear()}-${(this.date.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}-${this.date.getDate()}`,
-							initial_time: `${this.date.getHours()}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
+							initial_time: `${this.date.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
 							collection_name: "",
 							error: null,
 						})
@@ -133,17 +112,16 @@ class EntryContainer extends Component {
 						}
 					})
 					.then(() => {
-						// window.location.reload(true)
 						this.setState({
 							month: this.date.getMonth() + 1,
 							day: this.date.getDate(),
 							year: this.date.getFullYear(),
-							time: `${this.date.getHours()}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
+							time: `${this.date.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
 							entry: '',
 							collection_id: null,
 							picture: null,
 							initial_date: `${this.date.getFullYear()}-${(this.date.getMonth() + 1).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}-${this.date.getDate()}`,
-							initial_time: `${this.date.getHours()}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
+							initial_time: `${this.date.getHours().toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}:${(this.date.getMinutes()).toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping: false})}`,
 							collection_name: "",
 							error: null,
 						})
@@ -161,11 +139,10 @@ class EntryContainer extends Component {
 	render() {
 		return(
 			<div>
-				<EntryForm state = {this.state} createMap = {this.createMap} handleChange = {this.handleChange} handleSubmit = {this.handleSubmit}/>
-				<div ref={el => this.mapContainer = el} className='mapContainer'/>
+				<EntryForm state = {this.state} handleChange = {this.handleChange} handleSubmit = {this.handleSubmit}/>
 			</div>
 		)
 	}
 }
 
-export default EntryContainer
+export default EntryFormContainer
