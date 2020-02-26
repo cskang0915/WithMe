@@ -43,7 +43,6 @@ class Login extends Component {
 				this.props.history.push(`/profile`)
 			}else{
 				console.log(data)
-				// alert('Incorrect username or password')
 			}
 		})
 		.catch(err => {
