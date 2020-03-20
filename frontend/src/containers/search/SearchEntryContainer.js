@@ -7,7 +7,7 @@ import SearchMapContainer from './SearchMapContainer'
 class SearchEntryContainer extends Component {
   render() {
     let searchContainer
-// all, date, Collection, map
+
     if(this.props.search === 'all') {
       searchContainer = <SearchAllContainer/>
     } else if(this.props.search === 'collection') {
