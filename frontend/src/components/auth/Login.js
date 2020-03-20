@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
+import './Login.css'
 
 class Login extends Component {
 	state = {
@@ -53,18 +54,33 @@ class Login extends Component {
 	render() {
 		return(
 			<div className = "form-login">
+
+				<div className = "form-header">Sign In</div>
+				
 				<form onSubmit = {this.handleSubmit}>
+
 					<div className = "form-group-login">
-						<label>Email</label>
+						<label>Email address</label>
+						<br />
 						<input type = "email" name = "email" value = {this.state.display_name} onChange = {this.handleChange} placeholder = "Enter Username"/>
 					</div>
+					
 					<div className = "form-group-login">
 						<label>Password</label>
+						<br />
 						<input type = "password" name = "password" value = {this.state.password} onChange = {this.handleChange} placeholder = "Enter Password"/>
 					</div>
+
+					<div className = "form-checkbox">
+						<input type = "checkbox"/>
+						<label>Remember me</label>
+					</div>
+
 					<button type = "submit" className = "button-submit">Log In</button>
 				</form>
-				<Link to='/register'><button>Register</button></Link>
+				<Link to = '../home'>Forgot password</Link>
+				<br />
+				<Link to='/register'>Create an account</Link>
 			</div>
 		)
 	}
