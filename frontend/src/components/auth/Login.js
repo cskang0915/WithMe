@@ -78,9 +78,10 @@ class Login extends Component {
 
 					<button type = "submit" className = "button-submit">Log In</button>
 				</form>
-				<Link to = '../home'>Forgot password</Link>
+
+				<Link className = "form-link" to = '../home'>Forgot password</Link>
 				<br />
-				<Link to='/register'>Create an account</Link>
+				<Link className = "form-link" to='/register'>Create an account</Link>
 			</div>
 		)
 	}
