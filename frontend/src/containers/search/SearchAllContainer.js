@@ -18,6 +18,7 @@ class SearchAllContainer extends Component {
     })
     .then(res => res.json())
     .then(data => {
+      data.reverse()
       this.setState({
         data: data
       })

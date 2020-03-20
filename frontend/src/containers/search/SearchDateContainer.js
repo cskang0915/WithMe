@@ -27,6 +27,7 @@ class SearchDateContainer extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
+        data.reverse()
         this.setState({
           month: '',
           day: '',
@@ -47,6 +48,7 @@ class SearchDateContainer extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
+        data.reverse()
         this.setState({
           month: '',
           day: '',
@@ -67,6 +69,7 @@ class SearchDateContainer extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
+        data.reverse()
         this.setState({
           month: '',
           day: '',
@@ -87,6 +90,7 @@ class SearchDateContainer extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
+        data.reverse()
         this.setState({
           month: '',
           day: '',
@@ -107,6 +111,7 @@ class SearchDateContainer extends Component {
       })
       .then((res) => res.json())
       .then((data) => {
+        data.reverse()
         this.setState({
           month: '',
           day: '',

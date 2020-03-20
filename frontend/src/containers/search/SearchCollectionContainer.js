@@ -35,6 +35,7 @@ class SearchCollectionContainer extends Component {
         })
         .then((res => res.json()))
         .then((data) => {
+          data.reverse()
           this.setState({
             collection_name: '',
             collection_id: null,
@@ -66,6 +67,7 @@ class SearchCollectionContainer extends Component {
         })
         .then((res => res.json()))
         .then((data) => {
+          data.reverse()
           this.setState({
             collection_name: '',
             collection_id: null,
